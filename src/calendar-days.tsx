@@ -51,7 +51,8 @@ const CalendarRow = ({
   currentMonth: boolean;
 }) => {
   let targetDate = date - 1;
-  const today = moment().day();
+  const today = moment().date();
+  console.log(today);
 
   return Array.apply(0, Array(7)).map(() => {
     targetDate++;
