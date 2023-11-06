@@ -1,7 +1,16 @@
-.cal-row {
-    display: flex;
-}
 
 .day-col {
     display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 5px;
+
+    &--today {
+        display: flex;
+        padding: 2px;
+        align-items: center;
+        justify-content: center;
+        background-color: skyblue;
+        border-radius: 99px;
+    }
 }

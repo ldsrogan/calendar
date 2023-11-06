@@ -1,24 +1,38 @@
 
-.calendar-year {
+.calendar-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    flex-direction: column;
+    gap: 4px;
 
-    .year-control {
-        outline: none;
+    .calendar-year,
+    .month-row {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
-        padding: 4px 8px;
-        border: 1px solid gray;
-        border-radius: 4px;
-        background-color: white;
+        gap: 8px;
+    }
+    .date-text {
+        display: flex;
+        width: 150px;
+        text-align: center;
+        justify-content: center;
+    }
+}
 
-        &:hover {
-            background-color: lightgray;
-            cursor: pointer;
-        }
+
+.date-control {
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color: white;
+
+    &:hover {
+        background-color: lightgray;
+        cursor: pointer;
     }
 }

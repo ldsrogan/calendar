@@ -15,6 +15,7 @@ const CalendarDays: React.FunctionComponent<ICalendarDaysProps> = ({
   const dt = moment(`${year}-${month}`, 'YYYY-MM');
   const numDays = dt.daysInMonth();
   const startDay = dt.day();
+
   let row = 0;
   return (
     <table>
@@ -25,7 +26,11 @@ const CalendarDays: React.FunctionComponent<ICalendarDaysProps> = ({
           if (date > numDays) return null;
           return (
             <tr key={`cal-${index}`}>
-              <CalendarRow date={date} lastDate={numDays} />
+              <CalendarRow
+                date={date}
+                lastDate={numDays}
+                currentMonth={moment().month() + 1 === month}
+              />
             </tr>
           );
         })}
@@ -39,16 +44,27 @@ export default CalendarDays;
 const CalendarRow = ({
   date,
   lastDate,
+  currentMonth,
 }: {
   date: number;
   lastDate: number;
+  currentMonth: boolean;
 }) => {
-  let initialDate = date - 1;
+  let targetDate = date - 1;
+  const today = moment().day();
+
   return Array.apply(0, Array(7)).map(() => {
-    initialDate++;
+    targetDate++;
+    console.log(targetDate, today);
     return (
-      <td key={`cal-col-${initialDate}`}>
-        {initialDate <= lastDate && initialDate > 0 ? initialDate : ''}
+      <td key={`cal-col-${targetDate}`}>
+        <div
+          className={`day-col${
+            today === targetDate && currentMonth ? '--today' : ''
+          }`}
+        >
+          {targetDate <= lastDate && targetDate > 0 ? targetDate : ''}
+        </div>
       </td>
     );
   });

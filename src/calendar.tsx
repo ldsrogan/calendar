@@ -10,19 +10,19 @@ const App: FunctionComponent = () => {
   const [month, setMonth] = useState(date.month() + 1);
 
   return (
-    <div>
+    <div className="calendar-container">
       <div className="calendar-year">
         <button
-          className="year-control"
+          className="date-control"
           type="button"
           onClick={e => {
             e.stopPropagation();
             setYear(prev => prev - 1);
           }}
         >{`<`}</button>
-        {year}
+        <div className="date-text">{year}</div>
         <button
-          className="year-control"
+          className="date-control"
           type="button"
           onClick={e => {
             e.stopPropagation();
@@ -31,7 +31,37 @@ const App: FunctionComponent = () => {
         >{`>`}</button>
       </div>
       <div className="month-row">
-        {moment(`${year}-${month}`, 'YYYY-MM').format('MMMM')}
+        <button
+          className="date-control"
+          type="button"
+          onClick={e => {
+            e.stopPropagation();
+            let prev = month - 1;
+            if (prev <= 0) {
+              prev = 12;
+              setYear(pv => pv - 1);
+            }
+
+            setMonth(prev);
+          }}
+        >{`<`}</button>
+        <div className="date-text">
+          {moment(`${year}-${month}`, 'YYYY-MM').format('MMMM')}
+        </div>
+        <button
+          className="date-control"
+          type="button"
+          onClick={e => {
+            e.stopPropagation();
+            let next = month + 1;
+            if (next > 12) {
+              next = 1;
+              setYear(pv => pv + 1);
+            }
+
+            setMonth(next);
+          }}
+        >{`>`}</button>
       </div>
       <CalendarDays year={year} month={month} />
     </div>
