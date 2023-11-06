@@ -1,0 +1,24 @@
+
+.calendar-year {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    .year-control {
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 4px 8px;
+        border: 1px solid gray;
+        border-radius: 4px;
+        background-color: white;
+
+        &:hover {
+            background-color: lightgray;
+            cursor: pointer;
+        }
+    }
+}
